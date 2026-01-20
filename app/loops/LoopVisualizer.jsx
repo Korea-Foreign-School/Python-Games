@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { Play, RotateCcw, ChevronRight, Lightbulb } from 'lucide-react';
+import { Play, RotateCcw, ChevronRight, Lightbulb, ArrowLeft } from 'lucide-react';
+import Link from 'next/link';
 
 export default function LoopVisualizer() {
   const [code, setCode] = useState('for i in range(5):\n    print(i)');
@@ -24,10 +25,6 @@ export default function LoopVisualizer() {
     {
       name: 'While Loop Counter',
       code: 'count = 0\nwhile count < 5:\n    print(count)\n    count = count + 1'
-    },
-    {
-      name: 'Nested Loop Pattern',
-      code: 'for i in range(3):\n    for j in range(i + 1):\n        print("*", end="")\n    print()'
     },
     {
       name: 'Sum Calculator',
@@ -244,6 +241,14 @@ export default function LoopVisualizer() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-6">
       <div className="max-w-6xl mx-auto">
+        {/* Back Button */}
+        <Link href="/">
+          <button className="mb-4 flex items-center gap-2 px-4 py-2 bg-white hover:bg-gray-100 text-gray-700 rounded-lg shadow-md transition-colors">
+            <ArrowLeft className="w-5 h-5" />
+            Back to Home
+          </button>
+        </Link>
+
         <div className="bg-white rounded-xl shadow-2xl overflow-hidden">
           <div className="bg-gradient-to-r from-blue-600 to-indigo-600 p-6">
             <h1 className="text-3xl font-bold text-white flex items-center gap-3">
@@ -351,7 +356,7 @@ export default function LoopVisualizer() {
             {/* Examples */}
             <div className="mt-6">
               <h3 className="font-semibold text-gray-700 mb-3">Example Loops</h3>
-              <div className="grid grid-cols-2 md:grid-cols-5 gap-2">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                 {examples.map((example, idx) => (
                   <button
                     key={idx}
